@@ -11,7 +11,8 @@ $(document).ready(function() {
 
     var inputtedTask = $("input#new-task").val();
 
-    var newTask = new Task (inputtedTask);
+    var newTask = new Task(inputtedTask);
+    $(".checkbox").append("<input type='checkbox' name='task'>" + inputtedTask + "<br>");
 
 
   });
