@@ -1,3 +1,13 @@
+li{
+  color: blue;
+  cursor: pointer;
+}
+li:hover {
+  text-decoration: underline;
+}
 .checklist {
+  display: none;
+}
+.show-info {
   display: none;
 }

@@ -12,12 +12,24 @@ $(document).ready(function() {
     event.preventDefault();
 
     var inputtedTask = $("input#new-task").val();
+    var inputtedDate = $("input#new-date").val();
+    var inputtedlocation = $("input#new-location").val();
 
-    var newTask = new Task(inputtedTask);
-    $(".checkbox").append("<li><input type='checkbox' name='task' value='" + newTask.taskName + "'>" + "<span id = '" + newTask.taskName + "'>" + newTask.taskName + "</span> <br>");
+
+    var newTask = new Task(inputtedTask, inputtedDate, inputtedlocation);
+
+    $(".checkbox").append("<li><input type='checkbox' class='task' value='" + newTask.taskName + "'>" + "<span id = '" + newTask.taskName + "'>" + newTask.taskName + "</span> <br>");
     $(".checklist").show();
 
+    $(".checkbox li").last().click(function() {
+      $(".show-info").show();
+      $(".show-dueDate").text(newTask.dueDate);
+      $(".show-location").text(newTask.location);
+    });
+
+
     $("input:text").val("");
+
   });
   $("form.checklist").submit(function(event){
     event.preventDefault();
@@ -25,9 +37,9 @@ $(document).ready(function() {
     if (test) {
       $("input:checkbox:checked").each(function() {
         $("input:checkbox:checked").parent().remove();
+        $(".show-info").hide();
       });
     }
   });
-
 
 });
